@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Counter.scss";
 import {connect} from "react-redux"
 import {increment, decrement} from "../../store/Counter/Counter.store";
 
@@ -13,11 +14,13 @@ class Counter extends React.Component {
     const {increment, decrement, count} = this.props;
 
     return (
-      <div>
+      <div className="counter">
         <h1>Counter</h1>
         <p>{count}</p>
-        <button onClick={increment}>+</button>
-        <button onClick={decrement}>-</button>
+        <div className="button-grp">
+          <button onClick={increment}>+</button>
+          <button onClick={decrement}>-</button>
+        </div>
       </div>
     )
   }

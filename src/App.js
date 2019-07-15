@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import "./App.scss"
 import { hot } from 'react-hot-loader';
 import {Route} from "react-router-dom"
 import {ConnectedRouter} from "connected-react-router";
