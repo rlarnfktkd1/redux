@@ -1,8 +1,8 @@
 export const url = {
   dasom:
     process.env.NODE_ENV === "development"
-      ? 'http://35.189.189.53:8080'
-      : 'https://helper.dasomi.ai'
+      ? '[개발 중 사용 API 주소]'
+      : "[배포 서버시 사용 API 주소]"
 }
 
 console.log(
