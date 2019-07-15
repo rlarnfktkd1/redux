@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment} from 'react';
+import {Route, BrowserRouter} from "react-router-dom"
+import {Provider} from "react-redux";
+import Counter from "./components/Counter/Counter"
+import Todo from "./components/Todo/Todo"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  render() {
+    const {store} = this.props;
+    return (
+      <Provider store={store}>
+        <BrowserRouter>
+          <RoutesComponent />
+        </BrowserRouter>
+      </Provider>
+    );
+  }
 }
+
+const RoutesComponent = () => (
+  <Fragment>
+    <Route exact path="/" component={Counter} />
+    <Route exact path="/todo" component={Todo} />
+  </Fragment>
+)
 
 export default App;
