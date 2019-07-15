@@ -2,6 +2,7 @@ import {createStore, applyMiddleware, compose} from "redux"
 import reducers from "./reducers.js";
 import {routerMiddleware} from "connected-react-router";
 
+// 개발 서버 인지 운영 서버 인지 확인
 const isDev = process.env.NODE_ENV === "development" || true;
 
 const devtools =
@@ -9,9 +10,12 @@ const devtools =
     ? window.devToolsExtension
     : () => fn => fn;
 
-const configureStore = (initialState) => {
+const configureStore = (initialState,history) => {
 
+  // 스토어 인핸서 : 스토어 생산자를 결합하여 새 스토어 생산자를 반환하는 고차 함수
   const enhancer = [
+    // applyMiddleware : 미들웨어 연결 해주는 내장 함수
+    applyMiddleware(routerMiddleware(history)),
     devtools({
       actionsBlacklist: ["trade/UPDATE_TICKER"],
       maxAge: 1000
@@ -19,7 +23,7 @@ const configureStore = (initialState) => {
   ]
 
   const store = createStore(
-    reducers,
+    reducers(history),
     initialState,
     compose(...enhancer)
   )
