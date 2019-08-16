@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import configureStore from "./store/configure"
+import "react-app-polyfill/ie9";
 
 const initialState = window.__INITIAL_STATE__;
 const history = createBrowserHistory();
